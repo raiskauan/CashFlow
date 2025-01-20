@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "CashFlow.Domain": {
+      "commandName": "Project"
+    },
+    "Perfil 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Kauan Rais\\Documentos\\PROJETOSC#\\ROCKET SEAT - C# COMPLETO\\CashFlow\\src\\CashFlow.Api\\bin\\Debug\\net8.0\\CashFlow.Api.dll"
+    }
+  }
+}

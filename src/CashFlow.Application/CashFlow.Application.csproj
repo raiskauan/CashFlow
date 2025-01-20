@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UseCases\Expenses\Reports\PDF\Fonts\Raleway-Black.ttf" />
+    <None Remove="UseCases\Expenses\Reports\PDF\Fonts\Raleway-Regular.ttf" />
+    <None Remove="UseCases\Expenses\Reports\PDF\Fonts\WorkSans-Black.ttf" />
+    <None Remove="UseCases\Expenses\Reports\PDF\Fonts\WorkSans-Regular.ttf" />
+    <None Remove="UseCases\Expenses\Reports\CovertPaymentTypeMessages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="UseCases\Expenses\Reports\PDF\Fonts\Raleway-Black.ttf" />
+    <EmbeddedResource Include="UseCases\Expenses\Reports\PDF\Fonts\Raleway-Regular.ttf" />
+    <EmbeddedResource Include="UseCases\Expenses\Reports\PDF\Fonts\WorkSans-Black.ttf" />
+    <EmbeddedResource Include="UseCases\Expenses\Reports\PDF\Fonts\WorkSans-Regular.ttf" />
+    <EmbeddedResource Remove="UseCases\Expenses\Reports\CovertPaymentTypeMessages\**" />
+    <EmbeddedResource Update="UseCases\Expenses\Reports\ReportMessages\ResourceReportGenerationMessage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceReportGenerationMessage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CashFlow.Communication\CashFlow.Communication.csproj" />
+    <ProjectReference Include="..\CashFlow.Domain\CashFlow.Domain.csproj" />
+    <ProjectReference Include="..\CashFlow.Exception\CashFlow.Exception.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageReference Include="PDFsharp-MigraDoc" Version="6.2.0-preview-2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="UseCases\Expenses\Reports\CovertPaymentTypeMessages\ConvertPaymentTypeMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConvertPaymentTypeMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UseCases\Expenses\Reports\CovertPaymentTypeMessages\ConvertPaymentTypeMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConvertPaymentTypeMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Remove="UseCases\Expenses\Reports\CovertPaymentTypeMessages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Logo\ProfilePhoto.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
