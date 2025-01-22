@@ -27,6 +27,15 @@ qualidade.
 
 - **RESTful API com Documentação Swagger**: Interface documentada que facilita a integração e o teste por parte dos desenvolvedores
 
+### Construído com
+
+![badge-dot-net]
+![badge-windows]
+![badge-visual-studio]
+![badge-mysql]
+![badge-swagger]
+
+
 ## Getting Started
 
 Para obter uma cópia local funcionando, siga estes passos simples.
@@ -55,4 +64,16 @@ Para obter uma cópia local funcionando, siga estes passos simples.
 [Swagger]: Imagens/Swagger.PNG
 [Excel]: Imagens/Excel.PNG
 [PDF]: Imagens/PDF.PNG
+
+<!-- Badges -->
+
+[badge-dot-net]: https://img.shields.io/badge/.NET-512BD4?logo=dotnet&logoColor=fff&style=for-the-badge
+
+[badge-windows]: https://img.shields.io/badge/Windows-blue?style=for-the-badge&logo=Windows
+
+[badge-visual-studio]: https://img.shields.io/badge/Visual%20Studio-blueviolet?style=for-the-badge&logo=visualstudio&logoColor=white
+
+[badge-mysql]: https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&style=for-the-badge
+
+[badge-swagger]: https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=000&style=for-the-badge
 
