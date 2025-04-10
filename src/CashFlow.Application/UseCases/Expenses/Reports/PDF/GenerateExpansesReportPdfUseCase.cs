@@ -1,5 +1,9 @@
+using System;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using CashFlow.Application.UseCases.Expenses.Reports.Excel;
 using CashFlow.Application.UseCases.Expenses.Reports.Extensions;
 using CashFlow.Application.UseCases.Expenses.Reports.PDF.Colors;
@@ -69,7 +73,7 @@ public class GenerateExpansesReportPdfUseCase : IGenerateExpansesReportPdfUseCas
             AddAmountForExpanse(row.Cells[3], expense.Amount);
 
             // Se essa verificação for igual a Falsa ela vai devolver o campo de descrição
-            // caso o contrario não haverá dexcrição.
+            // caso o contrario não haverá descrição.
             
             if (string.IsNullOrWhiteSpace(expense.Description) == false)
             {
@@ -219,4 +223,6 @@ public class GenerateExpansesReportPdfUseCase : IGenerateExpansesReportPdfUseCas
         renderer.PdfDocument.Save(file);
         return file.ToArray();
     }
+
+    
 }

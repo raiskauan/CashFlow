@@ -11,10 +11,6 @@ public class ExceptionFilter : IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {
-        // Verifica se a exceção causada é do tipo CashFlowException,
-        // se for ele lança uma exceção já programda, se não for ele lança
-        // um erro desconhecido. 
-        
         if (context.Exception is CashFlowException)
         {
             HandleProjectException(context);

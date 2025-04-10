@@ -69,6 +69,42 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cet email est déjà utilisé..
+        /// </summary>
+        internal static string EMAIL_ALREADY_REGISTERED {
+            get {
+                return ResourceManager.GetString("EMAIL_ALREADY_REGISTERED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;e-mail ne peut pas être vide..
+        /// </summary>
+        internal static string EMAIL_EMPTY {
+            get {
+                return ResourceManager.GetString("EMAIL_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L&apos;email n&apos;est pas valide..
+        /// </summary>
+        internal static string EMAIL_INVALID {
+            get {
+                return ResourceManager.GetString("EMAIL_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email ou mot de passe non valide..
+        /// </summary>
+        internal static string EMAIL_OR_PASSWORD_INVALID {
+            get {
+                return ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dépenses non trouvées..
         /// </summary>
         internal static string EXPENSE_NOT_FOUND {
@@ -83,6 +119,24 @@ namespace CashFlow.Exception {
         internal static string EXPENSES_CANNOT_FOR_THE_FUTURE {
             get {
                 return ResourceManager.GetString("EXPENSES_CANNOT_FOR_THE_FUTURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Votre mot de passe doit comporter au moins 8 caractères, contenant au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial (par exemple, !, ?, &quot;, .)..
+        /// </summary>
+        internal static string INVALID_PASSWORD {
+            get {
+                return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Le nom ne peut pas être vide..
+        /// </summary>
+        internal static string NAME_EMPTY {
+            get {
+                return ResourceManager.GetString("NAME_EMPTY", resourceCulture);
             }
         }
         

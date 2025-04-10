@@ -6,19 +6,21 @@ using CashFlow.Application.UseCases.Expenses.Update;
 using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
 using CashFlow.Exception.ExceptionsBase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CashFlow.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ExpensesController : ControllerBase
     {
 
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredExpenseJson), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
-        public  async Task<IActionResult> Register([FromBody] RequestExpenseJson request, [FromServices] IRegisterExpenseUseCase useCase)
+        public async Task<IActionResult> Register([FromBody] RequestExpenseJson request, [FromServices] IRegisterExpenseUseCase useCase)
         {
            var response = await useCase.Execute(request);
 

@@ -69,6 +69,42 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Esse e-mail já está sendo usado..
+        /// </summary>
+        internal static string EMAIL_ALREADY_REGISTERED {
+            get {
+                return ResourceManager.GetString("EMAIL_ALREADY_REGISTERED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O e-mail não pode estar vazio..
+        /// </summary>
+        internal static string EMAIL_EMPTY {
+            get {
+                return ResourceManager.GetString("EMAIL_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O e-mail é invalido..
+        /// </summary>
+        internal static string EMAIL_INVALID {
+            get {
+                return ResourceManager.GetString("EMAIL_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail ou senha inválida..
+        /// </summary>
+        internal static string EMAIL_OR_PASSWORD_INVALID {
+            get {
+                return ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Despesa não encontrada..
         /// </summary>
         internal static string EXPENSE_NOT_FOUND {
@@ -87,6 +123,24 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sua senha deve ter no minimo 8 caracteres, contendo pelo menos uma letra maiuscula, uma letra minuscula, um número e um caractere especial (por exemplo, !, ?, &quot;, .)..
+        /// </summary>
+        internal static string INVALID_PASSWORD {
+            get {
+                return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O nome não pode estar vazio..
+        /// </summary>
+        internal static string NAME_EMPTY {
+            get {
+                return ResourceManager.GetString("NAME_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O tipo de pagamento não é valido..
         /// </summary>
         internal static string PAYMENT_TYPE_INVALID {
@@ -96,7 +150,7 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O pagamento é obrigatorio..
+        ///   Looks up a localized string similar to Título Obrigatorio..
         /// </summary>
         internal static string TITLE_REQUIRED {
             get {

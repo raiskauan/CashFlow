@@ -14,6 +14,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ResourceReportGenerationMessages.resx</DependentUpon>
     </Compile>
+    <Compile Remove="Reports\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +26,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceReportGenerationMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Remove="Reports\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Entities\Enum\**" />
+    <None Remove="Reports\**" />
   </ItemGroup>
 
 </Project>

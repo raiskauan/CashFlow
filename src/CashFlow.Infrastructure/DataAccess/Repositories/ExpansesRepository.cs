@@ -17,27 +17,21 @@ internal class ExpansesRepository : IExpansesReadOnlyRepository, IExpansesWriteO
         await _dbContext.Expanses.AddAsync(expanse);
     }
 
-    public async Task<bool> Delete(long id)
+    public async Task Delete(long id)
     {
-        var result = await _dbContext.Expanses.FirstOrDefaultAsync(expanse => expanse.Id == id);
-        if (result is null)
-        {
-            return false;
-        }
+        var result = await _dbContext.Expanses.FindAsync(id);
         
-        _dbContext.Expanses.Remove(result);
-        
-        return true;
+        _dbContext.Expanses.Remove(result!);
     }
     
-    public async Task<List<Expanse>> GetAll()
+    public async Task<List<Expanse>> GetAll(User user)
     {
-        return await _dbContext.Expanses.AsNoTracking().ToListAsync();
+        return await _dbContext.Expanses.AsNoTracking().Where(expanse => expanse.UserId == user.Id).ToListAsync();
     }
 
-    async Task<Expanse?> IExpansesReadOnlyRepository.GetById(long id)
+    async Task<Expanse?> IExpansesReadOnlyRepository.GetById(User user,long id)
     {
-        return await _dbContext.Expanses.AsNoTracking().FirstOrDefaultAsync(expanse => expanse.Id == id);
+        return await _dbContext.Expanses.AsNoTracking().FirstOrDefaultAsync(expanse => expanse.Id == id && expanse.UserId == user.Id);
     }
 
     public async Task<List<Expanse>> FilterByMonth(DateOnly date)
@@ -52,9 +46,9 @@ internal class ExpansesRepository : IExpansesReadOnlyRepository, IExpansesWriteO
             .ThenBy(expanse => expanse.Title).ToListAsync();
     }
 
-    async Task<Expanse?> IExpansesUpdateOnlyRepository.GetById(long id)
+    async Task<Expanse?> IExpansesUpdateOnlyRepository.GetById(User user,long id)
     {
-        return await _dbContext.Expanses.FirstOrDefaultAsync(expanse => expanse.Id == id);
+        return await _dbContext.Expanses.FirstOrDefaultAsync(expanse => expanse.Id == id && expanse.UserId == user.Id);
     }
     
 
