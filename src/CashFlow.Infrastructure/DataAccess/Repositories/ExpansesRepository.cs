@@ -34,16 +34,19 @@ internal class ExpansesRepository : IExpansesReadOnlyRepository, IExpansesWriteO
         return await _dbContext.Expanses.AsNoTracking().FirstOrDefaultAsync(expanse => expanse.Id == id && expanse.UserId == user.Id);
     }
 
-    public async Task<List<Expanse>> FilterByMonth(DateOnly date)
+    public async Task<List<Expanse>> FilterByMonth(User user,DateOnly date)
     {
         var startDate = new DateTime(date.Year, date.Month, 1, 0, 0, 0);
         var daysInMonth = DateTime.DaysInMonth(date.Year, date.Month);
         var endDate = new DateTime(date.Year, date.Month, daysInMonth, 23, 59, 59);
         
-        return await _dbContext.Expanses.AsNoTracking()
-            .Where(expanse => expanse.Date >= startDate && expanse.Date <= endDate)
+        return await _dbContext
+            .Expanses
+            .AsNoTracking()
+            .Where(expanse => expanse.UserId == user.Id && expanse.Date >= startDate && expanse.Date <= endDate)
             .OrderBy(expanse => expanse.Date)
-            .ThenBy(expanse => expanse.Title).ToListAsync();
+            .ThenBy(expanse => expanse.Title)
+            .ToListAsync();
     }
 
     async Task<Expanse?> IExpansesUpdateOnlyRepository.GetById(User user,long id)

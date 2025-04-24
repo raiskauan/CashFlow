@@ -24,6 +24,7 @@
     <ItemGroup>
       <Compile Remove="UnitTest1.cs" />
       <Compile Remove="Users\LoginUseCaseTest.cs" />
+      <Compile Remove="Expanses\RegisterUseCaseTest.cs" />
     </ItemGroup>
 
     <ItemGroup>

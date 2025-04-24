@@ -9,6 +9,7 @@ using CashFlow.Application.UseCases.Expenses.Reports.Extensions;
 using CashFlow.Application.UseCases.Expenses.Reports.PDF.Colors;
 using CashFlow.Application.UseCases.Expenses.Reports.PDF.Fonts;
 using CashFlow.Domain.Repositories.Expanses;
+using CashFlow.Domain.Services.ILoggedUser;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
@@ -22,10 +23,12 @@ public class GenerateExpansesReportPdfUseCase : IGenerateExpansesReportPdfUseCas
     private const int HEIGHT_ROW_EXPANSE_TABLE = 25;
     
     private readonly IExpansesReadOnlyRepository _repository;
+    private readonly ILoggedUser _loggedUser;
     
-    public GenerateExpansesReportPdfUseCase(IExpansesReadOnlyRepository repository)
+    public GenerateExpansesReportPdfUseCase(IExpansesReadOnlyRepository repository, ILoggedUser logger)
     {
         _repository = repository;
+        _loggedUser = logger;
 
         GlobalFontSettings.FontResolver = new ExpensesReportFontResolver();
     }
@@ -33,16 +36,18 @@ public class GenerateExpansesReportPdfUseCase : IGenerateExpansesReportPdfUseCas
 
     public async Task<byte[]> Execute(DateOnly month)
     {
-        var expanses = await _repository.FilterByMonth(month);
+        var loggedUser = await _loggedUser.Get();
+        
+        var expanses = await _repository.FilterByMonth(loggedUser,month);
         if (expanses.Count == 0)
         {
             return [];
         }
 
-        var document = CreateDocument(month);
+        var document = CreateDocument(loggedUser.Name,month);
         var page = CreatePage(document);
         
-        CreateHeaderWithProfilePhotoAndName(page);
+        CreateHeaderWithProfilePhotoAndName(loggedUser.Name,page);
 
         var totalExpenses = expanses.Sum(exp => exp.Amount);
         CreateTotalSpentSection(page, month, totalExpenses);
@@ -96,11 +101,11 @@ public class GenerateExpansesReportPdfUseCase : IGenerateExpansesReportPdfUseCas
         return RenderDocument(document);
     }
 
-    private Document CreateDocument(DateOnly month)
+    private Document CreateDocument(string author,DateOnly month)
     {
         var document = new Document();
         document.Info.Title = $"{ResourceReportGenerationMessage.EXPANSES_FOR} {month.ToString("Y")}";
-        document.Info.Author = "Kauan Rais";
+        document.Info.Author = author;
 
         var style = document.Styles["Normal"];
         style!.Font.Name = FontHelper.RALEWAY_REGULAR;
@@ -122,7 +127,7 @@ public class GenerateExpansesReportPdfUseCase : IGenerateExpansesReportPdfUseCas
         return section;
     }
 
-    private void CreateHeaderWithProfilePhotoAndName(Section page)
+    private void CreateHeaderWithProfilePhotoAndName(string name,Section page)
     {
         var table = page.AddTable();
         table.AddColumn();
@@ -136,7 +141,7 @@ public class GenerateExpansesReportPdfUseCase : IGenerateExpansesReportPdfUseCas
         var pathFile = Path.Combine(directoryName!, "Logo", "ProfilePhoto.jpg"); 
 
         row.Cells[0].AddImage(pathFile);
-        row.Cells[1].AddParagraph("Hey, Kauan Rais");
+        row.Cells[1].AddParagraph($"Hey, {name}");
         row.Cells[1].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
         row.Cells[1].VerticalAlignment = VerticalAlignment.Center;
     }
