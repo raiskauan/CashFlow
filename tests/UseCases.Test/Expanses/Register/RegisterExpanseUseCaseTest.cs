@@ -1,7 +1,5 @@
-using System.Runtime.CompilerServices;
 using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Domain.Entities;
-using CashFlow.Domain.Repositories.Expanses;
 using CashFlow.Exception;
 using CashFlow.Exception.ExceptionsBase;
 using CommonTestUtilities.Entities;
@@ -11,7 +9,7 @@ using CommonTestUtilities.Repositories;
 using CommonTestUtilities.Requests;
 using FluentAssertions;
 
-namespace UseCases.Test.Expanses;
+namespace UseCases.Test.Expanses.Register;
 
 public class RegisterExpanseUseCaseTest
 {

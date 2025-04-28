@@ -25,7 +25,7 @@ public class GetAllExpenseUseCase  : IGetAllExpanseUseCase
 
         return new ResponseExpansesJson
         {
-            Expanses = _mapper.Map<List<ResponseShortExpanseJson>>(result)
+            Expenses = _mapper.Map<List<ResponseShortExpanseJson>>(result)
         };
     }
 }
