@@ -13,7 +13,9 @@ namespace WebApi.Test;
 
 public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
-    private CashFlow.Domain.Entities.User _user;
+    private Expanse _expense;
+    
+    private User _user;
     private string _password;
     private string _token;
     
@@ -48,6 +50,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     public string GetEmail() => _user.Email;
     public string GetPassword() => _password;
     public string GetToken() => _token;
+    public long GetExpenseId() => _expense.Id;
 
     private void StartDataBase(CashFlowDbContext dbContext, IPasswordEncripter passwordEncripter)
     {
@@ -69,8 +72,8 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 
     private void AddExpenses(CashFlowDbContext dbContext, User user)
     {
-        var expense = ExpenseBuilder.Build(user);
+        _expense = ExpenseBuilder.Build(user);
         
-        dbContext.Expanses.Add(expense);
+        dbContext.Expanses.Add(_expense);
     }
 }

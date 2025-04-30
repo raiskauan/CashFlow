@@ -4,7 +4,7 @@ using CommonTestUtilities.Cryptography;
 
 namespace CommonTestUtilities.Entities;
 
-public class UserBuilder
+public static class UserBuilder
 {
     public static User Build()
     {
