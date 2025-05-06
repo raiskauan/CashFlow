@@ -1,3 +1,4 @@
+using CashFlow.Communication.Requests;
 using CashFlow.Domain.Enums;
 
 namespace CashFlow.Domain.Entities;
@@ -13,4 +14,17 @@ public class Expanse
     
     public long UserId { get; set; }
     public User User { get; set; } = default!;
+
+    public static explicit operator Expanse(RequestExpenseJson request)
+    {
+        return new Expanse()
+        {
+            Title = request.Title,
+            Amount = request.Amount,
+            Date = request.Date,
+            Description = request.Description,
+            Id = 0,
+            User = new User()
+        };
+    }
 }

@@ -30,14 +30,17 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 
         var loggedUser = await _loggedUser.Get();
         
-        var expanse = _mapper.Map<Expanse>(request);
+        var expanse = (Expanse)request;
         expanse.UserId = loggedUser.Id;
         
         await _repository.Add(expanse);
         
         await _unitOfWork.Commit();
 
-        return _mapper.Map<ResponseRegisteredExpenseJson>(expanse);
+        return new ResponseRegisteredExpenseJson()
+        {
+            Title = expanse.Title,
+        };
     }
 
     private void Validate(RequestExpenseJson request)
