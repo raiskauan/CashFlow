@@ -12,4 +12,6 @@ public class ExpenseIdentityManager
     }
     
     public long GetExpenseId() => _expense.Id;
+    
+    public DateTime GetDate() => _expense.Date;
 }

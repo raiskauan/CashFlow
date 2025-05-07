@@ -33,7 +33,7 @@ public class UpdateExpenseUseCaseTest
         expense.Description.Should().Be(request.Description);
         expense.Amount.Should().Be(request.Amount);
         expense.Date.Should().Be(request.Date);
-      //  expense.PaymentType.Should().Be((PaymentType)request.PaymentType);
+        expense.PaymentType.Should().Be((PaymentType)request.PaymentType);
     }
 
     [Fact]
