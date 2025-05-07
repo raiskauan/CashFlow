@@ -26,6 +26,7 @@
 
     <ItemGroup>
       <Compile Remove="UnitTest1.cs" />
+      <Compile Remove="Expanses\DeleteExpenseTest.cs" />
     </ItemGroup>
 
     <ItemGroup>
