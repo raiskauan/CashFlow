@@ -25,11 +25,20 @@
       <Compile Remove="UnitTest1.cs" />
       <Compile Remove="Users\LoginUseCaseTest.cs" />
       <Compile Remove="Expanses\RegisterUseCaseTest.cs" />
+      <Compile Remove="Expanses\Reports\**" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\CashFlow.Application\CashFlow.Application.csproj" />
       <ProjectReference Include="..\CommonTestUtilities\CommonTestUtilities.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Expanses\Reports\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Expanses\Reports\**" />
     </ItemGroup>
 
 </Project>
