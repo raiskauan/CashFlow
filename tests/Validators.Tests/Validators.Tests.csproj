@@ -23,11 +23,20 @@
 
     <ItemGroup>
       <Compile Remove="UnitTest1.cs" />
+      <Compile Remove="Users\UpdatePassword\UpdatePasswordValidatorTest\**" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\CashFlow.Application\CashFlow.Application.csproj" />
       <ProjectReference Include="..\CommonTestUtilities\CommonTestUtilities.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Users\UpdatePassword\UpdatePasswordValidatorTest\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Users\UpdatePassword\UpdatePasswordValidatorTest\**" />
     </ItemGroup>
 
 </Project>
