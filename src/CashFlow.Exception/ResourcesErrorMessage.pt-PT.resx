@@ -57,4 +57,7 @@
     <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
         <value>a palavra-passe introduzida é diferente da atual</value>
     </data>
+    <data name="TAG_TYPE_NOT_SUPPORTED" xml:space="preserve">
+        <value>Tag não suportado.</value>
+    </data>
 </root>

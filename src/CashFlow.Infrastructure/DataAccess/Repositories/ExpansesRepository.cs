@@ -1,6 +1,7 @@
 using CashFlow.Domain.Entities;
 using CashFlow.Domain.Repositories.Expanses;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace CashFlow.Infrastructure.DataAccess.Repositories;
 
@@ -31,7 +32,9 @@ internal class ExpansesRepository : IExpansesReadOnlyRepository, IExpansesWriteO
 
     async Task<Expanse?> IExpansesReadOnlyRepository.GetById(User user,long id)
     {
-        return await _dbContext.Expanses.AsNoTracking().FirstOrDefaultAsync(expanse => expanse.Id == id && expanse.UserId == user.Id);
+        return await GetFullExpense()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(expanse => expanse.Id == id && expanse.UserId == user.Id);
     }
 
     public async Task<List<Expanse>> FilterByMonth(User user,DateOnly date)
@@ -51,12 +54,19 @@ internal class ExpansesRepository : IExpansesReadOnlyRepository, IExpansesWriteO
 
     async Task<Expanse?> IExpansesUpdateOnlyRepository.GetById(User user,long id)
     {
-        return await _dbContext.Expanses.FirstOrDefaultAsync(expanse => expanse.Id == id && expanse.UserId == user.Id);
+        return await GetFullExpense()
+            .FirstOrDefaultAsync(expanse => expanse.Id == id && expanse.UserId == user.Id);
     }
     
 
     public void Update(Expanse expanse)
     {
         _dbContext.Expanses.Update(expanse);
+    }
+
+    private IIncludableQueryable<Expanse, ICollection<Tag>> GetFullExpense()
+    {
+        return _dbContext.Expanses
+            .Include(expanse => expanse.Tags);
     }
 }

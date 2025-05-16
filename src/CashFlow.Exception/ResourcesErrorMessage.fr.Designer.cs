@@ -159,6 +159,15 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Balise non prise en charge..
+        /// </summary>
+        internal static string TAG_TYPE_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("TAG_TYPE_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Le titre est requis..
         /// </summary>
         internal static string TITLE_REQUIRED {
