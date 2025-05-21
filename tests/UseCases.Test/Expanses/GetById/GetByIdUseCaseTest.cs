@@ -13,7 +13,7 @@ namespace UseCases.Test.Expanses.GetById;
 public class GetByIdUseCaseTest
 {
     [Fact]
-    public async Task Sucess()
+    public async Task Success()
     {
         var loggedUser = UserBuilder.Build();
         var expense = ExpenseBuilder.Build(loggedUser);
@@ -29,6 +29,7 @@ public class GetByIdUseCaseTest
         result.Date.Should().Be(expense.Date);
         result.Amount.Should().Be(expense.Amount);
         result.PaymentType.Should().Be((CashFlow.Communication.Enums.PaymentType)expense.PaymentType);
+        result.Tags.Should().NotBeNullOrEmpty().And.BeEquivalentTo(expense.Tags.Select(tag => tag.Value));;
     }
     
     [Fact]

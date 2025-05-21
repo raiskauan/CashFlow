@@ -1,13 +1,10 @@
 using CashFlow.Application.UseCases.Expenses;
-using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Communication.Enums;
-using CashFlow.Communication.Requests;
 using CashFlow.Exception;
 using CommonTestUtilities.Requests;
 using FluentAssertions;
-using Xunit.Sdk;
 
-namespace Validators.Tests.Expanses.Register;
+namespace Validators.Tests.Expanses;
 
 public class ExpanseValidatorTests
 {
@@ -16,7 +13,7 @@ public class ExpanseValidatorTests
     {
         //Arrange
         var validator = new ExpanseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         //Act
         var result = validator.Validate(request);
         
@@ -32,7 +29,7 @@ public class ExpanseValidatorTests
     {
         //Arrange
         var validator = new ExpanseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         request.Title = title;
         
         //Act
@@ -48,7 +45,7 @@ public class ExpanseValidatorTests
     {
         //Arrange
         var validator = new ExpanseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         request.Date = DateTime.UtcNow.AddDays(1);
         
         //Act
@@ -64,7 +61,7 @@ public class ExpanseValidatorTests
     {
         //Arrange
         var validator = new ExpanseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         request.PaymentType = (PaymentType)700;
         
         //Act
@@ -84,7 +81,7 @@ public class ExpanseValidatorTests
     {
         //Arrange
         var validator = new ExpanseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         request.Amount = amount;
         
         //Act
@@ -93,5 +90,21 @@ public class ExpanseValidatorTests
         //Assert
         result.IsValid.Should().BeFalse();
         result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourcesErrorMessage.AMOUNT_MUST_BE_GREATER_THAN_ZERO));
+    }
+    
+    [Fact]
+    public void Error_Tag_Invalid()
+    {
+        //Arrange
+        var validator = new ExpanseValidator();
+        var request = RequestExpenseJsonBuilder.Build();
+        request.Tags.Add((Tag)1000);
+        
+        //Act
+        var result = validator.Validate(request);
+        
+        //Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(error => error.ErrorMessage.Equals(ResourcesErrorMessage.TAG_TYPE_NOT_SUPPORTED));
     }
 }

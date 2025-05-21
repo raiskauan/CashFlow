@@ -36,6 +36,8 @@ public class UpdateExpanseUseCase : IUpdateExpanseUseCase
             throw new NotFoundException(ResourcesErrorMessage.EXPENSE_NOT_FOUND);
         }
         
+        expense.Tags.Clear();
+        
         _mapper.Map(request, expense);
         
         _repository.Update(expense);
