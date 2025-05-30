@@ -19,12 +19,6 @@
       <LastGenOutput>ResourcesErrorMessage.pt-BR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
 	  
-    <EmbeddedResource Update="ResourcesErrorMessage.pt-PT.resx">
-	  <WithCulture>true</WithCulture>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourcesErrorMessage.pt-PT.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-	  
     <EmbeddedResource Update="ResourcesErrorMessage.fr.resx">
 	  <WithCulture>true</WithCulture>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -45,11 +39,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ResourcesErrorMessage.pt-BR.resx</DependentUpon>
-    </Compile>
-    <Compile Update="ResourcesErrorMessage.pt-PT.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ResourcesErrorMessage.pt-PT.resx</DependentUpon>
     </Compile>
     <Compile Update="ResourcesErrorMessage.fr.Designer.cs">
       <DesignTime>True</DesignTime>
