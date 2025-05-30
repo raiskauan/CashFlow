@@ -12,18 +12,25 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesErrorMessage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+	  
     <EmbeddedResource Update="ResourcesErrorMessage.pt-BR.resx">
+	  <WithCulture>true</WithCulture>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesErrorMessage.pt-BR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+	  
     <EmbeddedResource Update="ResourcesErrorMessage.pt-PT.resx">
+	  <WithCulture>true</WithCulture>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesErrorMessage.pt-PT.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+	  
     <EmbeddedResource Update="ResourcesErrorMessage.fr.resx">
+	  <WithCulture>true</WithCulture>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesErrorMessage.fr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+	  
     <EmbeddedResource Remove="ExceptionsBase\Resources1.resx" />
   </ItemGroup>
 
